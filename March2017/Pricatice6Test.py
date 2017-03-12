@@ -20,7 +20,7 @@ class BinarySearchTest(unittest.TestCase):
         actual = March2017.Practice6.binary_search([1, 3, 4, 4, 5, 7, 9, 10], 10)
         self.assertEqual(expected, actual)
         print("aaaaaaaaaaaaaaaaaaaaa")
-    def tes_illegal_case(self):
+    def test_illegal_case(self):
             # listのどの値よりも小さい値を検索
         expected = -1
         actual = March2017.Practice6.binary_search([1, 3, 4, 4, 5, 7, 9, 10], -3)
