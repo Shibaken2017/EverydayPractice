@@ -1,0 +1,43 @@
+import unittest
+import March2017.Practice7
+class Practice7test(unittest.TestCase):
+    def test_normal_input(self):
+        #通常の入力
+        expected=[-1,2,3]
+        actual=March2017.Practice7.selection_sort([3,2,-1])
+        self.assertEqual(expected,actual)
+
+    def test_empty_input(self):
+        expected=[]
+        actual = March2017.Practice7.selection_sort([])
+        self.assertEqual(expected, actual)
+
+
+    def test_len1_input(self):
+        expected=[2]
+        actual = March2017.Practice7.selection_sort([2])
+        self.assertEqual(expected, actual)
+
+
+    def test_len2_input(self):
+        expected = [1,2]
+        actual = March2017.Practice7.selection_sort([2,1])
+        self.assertEqual(expected, actual)
+
+
+    def test_alreaddy_sorted(self):
+        expected=[1,2,3]
+        actual = March2017.Practice7.selection_sort([1,2,3])
+        self.assertEqual(expected, actual)
+
+
+    def test_all_same_value(self):
+        expected=[1,1,1,1,1]
+        actual = March2017.Practice7.selection_sort([1,1,1,1,1])
+        self.assertEqual(expected, actual)
+
+
+    def test_duplicate_value(self):
+        expected = [-5,1,3,3,4]
+        actual = March2017.Practice7.selection_sort([-5,3,3,1,4])
+        self.assertEqual(expected, actual)
