@@ -1,11 +1,16 @@
 '''
 逐次交代選択法
 '''
+import pandas as pd
 from sklearn.base import clone
 from itertools import combinations
 import numpy as np
 from sklearn.cross_validation import train_test_split
 from sklearn.metrics import accuracy_score
+
+from sklearn.cross_validation import train_test_split
+
+
 
 class SBS():
     def __init__(self,estimator,k_features,scoring=accuracy_score,test_size=0.25,random_state=1):
@@ -17,8 +22,7 @@ class SBS():
 
 
     def fit(self,X,y):
-        X_train,X_test,y_train,y_test=
-        train_test_split(X,y,test_size=self.test_size,random_state=self.random_state)
+        X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=self.test_size,random_state=self.random_state)
         dim=X_train.shape[1]
         self.indices_=tuple(range(dim))
         self.subsets_=[self.indices_]
@@ -50,8 +54,6 @@ class SBS():
 
     def _calc_score(self,X_train,y_train,X_test,y_test,indices):
         self.estimator.fit(X_train[:,indices],y_train)
-        y_pred=self.estimator.preddict(X_test[:,indices])
+        y_pred=self.estimator.predict(X_test[:,indices])
         score=self.scoring(y_test,y_pred)
         return score
-
-i
