@@ -4,12 +4,20 @@ K_measn法の実装。
 '''
 import numpy as np
 import math
-class ELement:
-    def __init__(self,id,name,x):
+
+class Element:
+    def __init__(self,id,name,position):
+        '''
+
+        :param id:
+        :param name:
+        :param position:t位置ベクトル
+        '''
         self.id=id
         self.name=name
-        self.x=x
-        #各重心と自身の距離を保持
+        self.position=position
+        #key:各重心のid
+        # valuer:その重心との距離
         self.distance_dict={}
 
     def calc_distance(self,name,g):
