@@ -20,11 +20,11 @@ class Element:
         # valuer:その重心との距離
         self.distance_dict={}
 
-    def calc_distance(self,name,g):
+    def calc_distance(self,g):
         '''
         指定した重心との距離を測りdictに保存
         :param name:
         :param g:
         :return:
         '''
-        self.distance_dict[name]=math.sqrt(np.dot(self.x-g,self.x-g))
+        self.distance_dict[g.id]=math.sqrt(np.dot(self.position-g.poosition,self.position-g.positon))

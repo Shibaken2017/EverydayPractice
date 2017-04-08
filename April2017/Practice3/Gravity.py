@@ -10,7 +10,7 @@ class Gravity:
         :param position: 重心の位置ベクトル
         :param id: 重心のid
         '''
-        self.gravity_id=id
+        self.id=id
         self.position=position
         #クラスターに属する要素のidを保持
         self.id_set=set()
