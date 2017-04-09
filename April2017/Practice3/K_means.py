@@ -5,7 +5,7 @@ import numpy as np
 from April2017.Practice3 import Element
 import logging
 import random
-from April2017.Practice3 import Gravity
+from April2017.Practice3 import Kluster
 
 
 logging.basicConfig(level=logging.DEBUG,format='%(asctime)s-%(levelname)s-%(message)s')
@@ -20,9 +20,8 @@ class K_means:
         self.K=K
         self.N=N
         self.ele_list=[]
-        self.grav_list=[]
-        self.load_file(fname)
-        self.set_inital_gravity()
+        self.kluster_list=[]
+        self.fname=fname
 
     def load_file(self,fname):
         with open(fname,"r",encoding="UTF-8")as reader:
@@ -45,7 +44,7 @@ class K_means:
         for ele in tmp_list:
             i=0
             #    def __init__(self,position,id):
-            self.grav_list.append(Gravity.Gravity(ele.position,i))
+            self.kluster_list.append(Kluster.Kluster(ele.position, i))
             i+=1
 
 
@@ -69,15 +68,35 @@ class K_means:
         :param index:
         :return:
         '''
-        for grav in self.grav_list:
-            self.ele_list[index].calc_distance(grav)
+        for kluster in self.kluster_list:
+            self.ele_list[index].calc_distance(kluster)
 
     def calc_distances(self):
         for i in range(len(self.ele_list)):
             self.calc_distance(i)
 
+    def choose_kluster_element(self):
+        '''
+        各クラスタの要素を保持する
+        :return:
+        '''
+        for ele in self.ele_list:
+            self.kluster_list[ele.choose_kluster()].add(ele.id)
+
+
+
+    def initial(self):
+        '''
+        初回の計算
+        :return:
+        '''
+        self.load_file(self.fname)
+        self.set_inital_gravity()
+        self.calc_distances()
+        self.choose_kluster_element()
+
 if __name__=='__main__':
     k=K_means("test.txt")
-    print(k.grav_list[0].position)
-
+    print(k.initial())
+    print(k.kluster_list[0].id_set)
 

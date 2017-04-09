@@ -4,7 +4,7 @@ K_means法の実装。各クラスターの重心の情報を保持する
 
 import numpy as np
 
-class Gravity:
+class Kluster:
     def __init__(self,position,id):
         '''
         :param position: 重心の位置ベクトル
@@ -34,7 +34,7 @@ class Gravity:
 
 
 if __name__=='__main__':
-    gravity=Gravity([1,2,3],2)
+    gravity=Kluster([1,2,3],2)
     gravity.add(2)
     gravity.add(3)
     print(gravity.id_set)
