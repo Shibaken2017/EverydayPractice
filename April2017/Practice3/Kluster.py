@@ -18,6 +18,11 @@ class Gravity:
 
 
     def add(self,id):
+        '''
+        クラスターの要素を追加
+        :param id:
+        :return:
+        '''
         self.id_set.add(id)
     def initialize(self):
         '''
