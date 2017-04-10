@@ -35,14 +35,15 @@ class K_means:
                 self.ele_list.append(Element.Element(id,name,position))
                 i+=1
 
-    def set_inital_gravity(self):
+    def set_inital_kluster(self):
         '''
         初期の重心を決定する
         :return:
         '''
+        #初期klusterをランダムサンプル
         tmp_list=random.sample(self.ele_list,self.K)
+        i=0
         for ele in tmp_list:
-            i=0
             #    def __init__(self,position,id):
             self.kluster_list.append(Kluster.Kluster(ele.position, i))
             i+=1
@@ -72,6 +73,10 @@ class K_means:
             self.ele_list[index].calc_distance(kluster)
 
     def calc_distances(self):
+        '''
+        各elementと各kurlusterの距離を計算する
+        :return:
+        '''
         for i in range(len(self.ele_list)):
             self.calc_distance(i)
 
@@ -81,6 +86,8 @@ class K_means:
         :return:
         '''
         for ele in self.ele_list:
+            #print(ele.id)
+            #print(ele.choose_kluster())
             self.kluster_list[ele.choose_kluster()].add(ele.id)
 
 
@@ -90,13 +97,18 @@ class K_means:
         初回の計算
         :return:
         '''
+
         self.load_file(self.fname)
-        self.set_inital_gravity()
+        self.set_inital_kluster()
         self.calc_distances()
+        #ここまでok
         self.choose_kluster_element()
 
 if __name__=='__main__':
     k=K_means("test.txt")
-    print(k.initial())
-    print(k.kluster_list[0].id_set)
-
+    k.initial()
+    #klusterとの距離が計算されているかの確認用
+    #for i in range(len(k.ele_list)):
+    #   print(k.ele_list[i].distance_dict)
+    #print(k.kluster_list[0].id_set)
+    print(k.kluster_list[1].id_set)

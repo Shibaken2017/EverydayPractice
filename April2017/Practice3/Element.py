@@ -4,6 +4,9 @@ K_measn法の実装。
 '''
 import numpy as np
 import math
+import logging
+from April2017.Practice3.Kluster import Kluster
+logging.basicConfig(level=logging.DEBUG,format='%(asctime)s-%(levelname)s-%(message)s')
 
 class Element:
     def __init__(self,id,name,position):
@@ -36,12 +39,26 @@ class Element:
         :return:
         '''
         tmp_id=0
-        tmp_dist=0
+        tmp_dist=float('inf')
         for id in self.distance_dict.keys():
-            if tmp_dist<self.distance_dict[id]:
+            if tmp_dist>self.distance_dict[id]:
                 tmp_id=id
-                tmp_dist=self.distance_dict
+                tmp_dist=self.distance_dict[id]
 
-            return tmp_id
+        return tmp_id
 
 
+if __name__=='__main__':
+    k_position=np.array([2,3,4,5])
+
+    id=3
+    k=Kluster(k_position,id)
+    k2=Kluster(k_position+10000,id+1)
+    ele_position=np.array([1,3,4,2])
+    ele=Element(0,"shiba",ele_position)
+    ele.calc_distance(k)
+    ele.calc_distance(k2)
+    print(ele.distance_dict)
+
+
+    print(ele.choose_kluster())
