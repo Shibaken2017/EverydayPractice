@@ -90,7 +90,15 @@ class K_means:
             #print(ele.choose_kluster())
             self.kluster_list[ele.choose_kluster()].add(ele.id)
 
+    def reclac_klusters_position(self):
+        '''
+        各クラスタの重心を再計算
+        :return:
+        '''
+        #    def recalc_position(self,ele_list):
 
+        for kluster in self.kluster_list:
+            kluster.recalc_position(self.ele_list)
 
     def initial(self):
         '''
@@ -104,6 +112,8 @@ class K_means:
         #ここまでok
         self.choose_kluster_element()
 
+
+
 if __name__=='__main__':
     k=K_means("test.txt")
     k.initial()
@@ -112,3 +122,4 @@ if __name__=='__main__':
     #   print(k.ele_list[i].distance_dict)
     #print(k.kluster_list[0].id_set)
     print(k.kluster_list[1].id_set)
+    k.reclac_klusters_position()

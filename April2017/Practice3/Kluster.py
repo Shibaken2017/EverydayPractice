@@ -31,6 +31,20 @@ class Kluster:
         '''
         self.id_set=set()
 
+    def recalc_position(self,ele_list):
+        '''
+        重心の再計算
+        :param list:
+        :return:
+        '''
+        sum=np.array([float(0) for i in range(len(self.position))])
+        for id in self.id_set:
+            sum+=ele_list[id].position
+
+
+        self.position=sum/len(self.id_set)
+        print(self.position)
+
 
 
 if __name__=='__main__':

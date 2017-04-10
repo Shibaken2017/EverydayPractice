@@ -22,6 +22,8 @@ class Element:
         #key:各重心のid
         # valuer:その重心との距離
         self.distance_dict={}
+        #所属しているクラスタとの距離
+        self.min_dist=0
 
     def calc_distance(self,kluster):
         '''
@@ -44,7 +46,8 @@ class Element:
             if tmp_dist>self.distance_dict[id]:
                 tmp_id=id
                 tmp_dist=self.distance_dict[id]
-
+        #クラスタの重心との距離を保存
+        self.min_dist=tmp_dist
         return tmp_id
 
 
