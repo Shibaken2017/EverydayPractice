@@ -43,7 +43,7 @@ class Kluster:
 
 
         self.position=sum/len(self.id_set)
-        print(self.position)
+        #print(self.position)
 
 
 

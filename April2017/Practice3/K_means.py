@@ -22,6 +22,11 @@ class K_means:
         self.ele_list=[]
         self.kluster_list=[]
         self.fname=fname
+        self.initial()
+
+        for i in range(N):
+            self.recalc()
+
 
     def load_file(self,fname):
         with open(fname,"r",encoding="UTF-8")as reader:
@@ -80,6 +85,10 @@ class K_means:
         for i in range(len(self.ele_list)):
             self.calc_distance(i)
 
+    def delete_kulster_element(self):
+        #クラスタの要素を消去
+        for kluster in self.kluster_list:
+            kluster.id_set=set()
     def choose_kluster_element(self):
         '''
         各クラスタの要素を保持する
@@ -112,14 +121,33 @@ class K_means:
         #ここまでok
         self.choose_kluster_element()
 
+    def recalc(self):
+        '''
+        2回目以降の計算
+        :return:
+        '''
+        #重心の再計算
+        self.reclac_klusters_position()
+        #重心との距離を計算
+        self.calc_distances()
+
+        #各クラスタの要素を決定
+        self.delete_kulster_element()
+        self.choose_kluster_element()
+
+
 
 
 if __name__=='__main__':
     k=K_means("test.txt")
-    k.initial()
+    a=(k.kluster_list[0].id_set)
+    b=(k.kluster_list[1].id_set)
+    print(a.intersection(b))
+
+
+    #k.initial()
     #klusterとの距離が計算されているかの確認用
     #for i in range(len(k.ele_list)):
     #   print(k.ele_list[i].distance_dict)
     #print(k.kluster_list[0].id_set)
-    print(k.kluster_list[1].id_set)
-    k.reclac_klusters_position()
+   # print(k.kluster_list[1].id_set)
