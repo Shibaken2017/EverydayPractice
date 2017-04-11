@@ -5,6 +5,7 @@
 '''
 import numpy as np
 from April2017.Practice4 import Element
+
 class Kluster:
     def __init__(self,id,ele_list):
         '''
@@ -68,6 +69,10 @@ class Kluster:
                 self.mean+=self.ele_list[i].position
 
         self.mean=self.mean/len(self.ele_list)
+
+
+
+
 
 
 
