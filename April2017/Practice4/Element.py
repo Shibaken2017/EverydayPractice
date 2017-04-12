@@ -24,3 +24,12 @@ class Element:
         #所属しているクラスタとの距離
         self.min_dist=0
 
+    def __str__(self):
+        return "id:{},name:{}".format(self.id,self.name)
+
+if __name__=='__main__':
+    ele=Element(1,"shiba",np.array([[1],[2]]))
+    ele2=Element(2,"ken",np.array([[2],[3]]  ))
+    print(ele)
+
+    print(ele.__str__())
