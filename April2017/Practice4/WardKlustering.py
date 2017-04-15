@@ -52,3 +52,22 @@ class Ward:
         self.kluster_dict[new_id].add_elements(self.kluster_dict[delete_id].ele_list)
 
         del self.kluster_dict[delete_id]
+
+
+
+
+
+    def calc_klusters(self):
+        '''
+        compair Ksluters and select an optimal pair
+        :return:
+        '''
+        tmp_dist=float("inf")
+        tmp_id1=None
+        tmp_id2=None
+
+        for i in range(self.kluster_dict-1):
+            for j in range(i+1,self.kluster_dict):
+
+
+
