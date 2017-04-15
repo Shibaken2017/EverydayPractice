@@ -21,7 +21,8 @@ class Ward:
                 name=tmp[0]
                 #要素の位置ベクトル
                 position=self.get_nparray(tmp[1:])
-                self.ele_list.append(Element(id,name,position))
+                tmp_ele=(Element(id,name,position))
+                self.kluster_dict(Kluster(id,[tmp_ele]))
                 i+=1
 
     def get_nparray(self, list):
