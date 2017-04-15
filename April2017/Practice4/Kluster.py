@@ -27,6 +27,7 @@ class Kluster:
         self.id=id
         self.ele_list=ele_list
         self.mean=None
+        self.calc_tr()
 
     def calc_kluster_tr(self,kluster):
         '''
