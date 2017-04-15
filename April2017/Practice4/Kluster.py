@@ -29,7 +29,7 @@ class Kluster:
         self.mean=None
         self.calc_tr()
 
-    def calc_kluster_tr(self,kluster):
+    def calc_kluster_dist(self,kluster):
         '''
         kluster間の距離を測る
         :return:
