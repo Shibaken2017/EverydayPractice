@@ -18,9 +18,9 @@ class Kluster:
     def __init__(self,id,ele_list):
         '''
         :type id: int
-        :param id:
-        :type ele_list: list[ Element ]
-        :param ele_list:
+        :param id:klusterのid
+        :type ele_list: list of Element
+        :param ele_list:element_list
         '''
         '''
 
@@ -35,6 +35,7 @@ class Kluster:
         self.ele_list=ele_list
         self.mean=None
         self.calc_tr()
+
 
     def calc_kluster_dist(self,kluster):
         '''
@@ -60,7 +61,6 @@ class Kluster:
         self.calc_cov()
         self.tr=sum([self.cov[i][i]  for i in range((self.cov.shape[0]))])
 
-
     def calc_cov(self):
         '''
         共分散行列の計算
@@ -74,18 +74,19 @@ class Kluster:
 
 
 
-
     def calc_mean(self):
         '''
         ele_listから平均ベクトルを求める
         :return:
         '''
         self.mean=self.ele_list[0].position
+
         if len(self.ele_list)>=2:
             for i in range(1,len(self.ele_list)):
                 self.mean+=self.ele_list[i].position
 
         self.mean=self.mean/len(self.ele_list)
+
     def add_elements(self,element_list):
         '''
         クラスターにelementを足す
@@ -116,8 +117,6 @@ if __name__=='__main__':
 
     element_list=[ele1,ele2]
     k=Kluster(1,element_list)
-    print(k)
-   # print(k.calc_kluster_tr(k))
     #k.calc_tr()
     #print(k.tr)
 

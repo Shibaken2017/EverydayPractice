@@ -34,6 +34,6 @@ class MakeTestData:
 
 
 if __name__ == '__main__':
-    test=MakeTestData(600,4)
+    test=MakeTestData(12,4)
     test.write_txt("test.txt")
 
