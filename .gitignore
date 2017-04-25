@@ -1,3 +1,10 @@
+
+
+
+
+
+
+*.pyc
 .idea/Practice.iml
 .idea/misc.xml
 .idea/modules.xml
