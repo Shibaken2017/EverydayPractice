@@ -5,8 +5,16 @@
 '''
 import numpy as np
 
+
 def rect_to_bb(rect):
-    ’’’’
+    '''
+    画像の左端、上、幅、高さを返す、
+    dlibではこの4つを返すのが慣習
+    :param rect: 
+    :return: 
+    '''
+
+
     # take a bounding predicted by dlib and convert it
     # to the format (x, y, w, h) as we would normally do
     # with OpenCV
@@ -20,6 +28,12 @@ def rect_to_bb(rect):
 
 
 def shape_to_np(shape, dtype="int"):
+    '''
+    detectorが返すshapeオブジェクトを配列に帰る
+    :param shape: 
+    :param dtype: 
+    :return: 
+    '''
     # initialize the list of (x, y)-coordinates
     coords = np.zeros((68, 2), dtype=dtype)
 
