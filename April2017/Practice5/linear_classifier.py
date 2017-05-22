@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 import random
 import numpy as np
-
-
+#binary
+#linear binary cllasification
 class LinearClassifier:
     def __init__(self,fname):
         self.load_data(fname)
@@ -35,8 +35,18 @@ class LinearClassifier:
 
         return output_list
 
+    def make_cov_matrix(self):
+        #calc cov matirxes
+        tmp_cov_list=[]
+        for mat in self.matrix_list:
+
+            tmp_cov_list.append(np.cov(mat, rowvar=0, bias=1))
+        print tmp_cov_list
+
+
 if __name__ == '__main__':
     test=LinearClassifier("test.txt")
-    print test.matrix_list
+    print len(test.matrix_list)
+    test.make_cov_matrix()
 
 
