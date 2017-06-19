@@ -123,7 +123,7 @@ class ShellWriter:
         line="jmeter -n -t my_test.jmx -l log.jtl -e -o report"
 
 
-    def write_nginx_part(self):
+    def write_nginx_part(self,process,connection):
         '''
         ngnx設定部分を記述
         :return:
@@ -132,12 +132,13 @@ class ShellWriter:
         self.output_txt+="ssh {}\n".format(SSH)
 
         #copy
-        self.output_txt+="cp   ".format()
+        conf="process{}_connection{}.conf".format(process,connection)
+        self.output_txt+="sudo cp  {} {}\n".format(conf,"/etc/nginx/nginx.conf")
 
         #nginx reload
-        self.output_txt+=""
+        self.output_txt+="sudo nginx -s reload\n"
         #exit
-        self.output_txt+=""
+        self.output_txt+="exit\n"
 
 
 
