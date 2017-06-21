@@ -11,8 +11,8 @@ class ShellWriter:
 
     '''
     def __init__(self,sleep_time=420,
-                 process_list=[1,2,3],
-                 connection_list=[1,8,16,32,64,128,256]
+                 process_list=[1],
+                 connection_list=[8]
                  ):
         '''
 
@@ -39,7 +39,7 @@ class ShellWriter:
 
         self.__base_name="process{}_connection{}_{}".format(process,connection,jmx_base)
 
-        self.__report_subdir_name=self.__report_dir+"/process{}_connection{}_{}/".format(process,connection,jmx_base)
+        self.__report_subdir_name=self.__report_dir+"process{}_connection{}_{}/".format(process,connection,jmx_base)
 
         if not os.path.exists(self.__report_subdir_name):
             os.mkdir(self.__report_subdir_name)
@@ -162,5 +162,5 @@ class ShellWriter:
 
 if __name__=="__main__":
     test=ShellWriter()
-    test.exe("./jmx_files/","./logdir/","./report_dir/","test.sh","")
+    test.exe("./jmx_files/","./logdir/","./report_dir/","test.sh")
     #test.make_report_sub_dir(12,23,"test123")
