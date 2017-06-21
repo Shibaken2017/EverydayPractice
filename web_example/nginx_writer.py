@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import os
-
 class NginxWriter:
+    '''
+    指定したプロセス数。・コネックション数のnginxファイルを位描き上げる
+    '''
     def __init__(self,    process_list=[1,2,3],
                  connection_list=[1,8,16,32,64,128,256]):
         print "nyan"
@@ -38,4 +40,3 @@ if __name__=="__main__":
 
 
 
-    print "aaaaaaaaaaaaaaaaaaaaaa"
