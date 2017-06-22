@@ -12,8 +12,14 @@ class ShellWriter:
 
     '''
 
-    def __init__(self):
+    def __init__(self,ssh_file="./ssh.txt"):
+
         print "nyan"
+        with open(ssh_file,"r")as reader:
+            self.ssh=reader.read()
+
+
+
 
     def exe(self, jmx_dir, report_dir, log_dir, output_fname,sleep_time=420):
         '''
@@ -39,7 +45,7 @@ class ShellWriter:
         self.__output_txt += "for process in 1 2 3;do\n"
         self.__output_txt += "for connection in 1 8 16 32 64 128 256;do\n"
         # ssh接続＆connetctionとprocess数変更
-        self.__output_txt += "ssh  "
+        self.__output_txt += "ssh  {} ".format(self.ssh)
         self.__output_txt += "sudo python /home/taro_biwajima/gitproject/Practice/web_example/nginx_rewriter.py /etc/nginx/nginx.conf ${process} ${connection}\n"
         #self.__output_txt+="exit\n"
     def write_jmeter_part(self):
