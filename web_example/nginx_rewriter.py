@@ -24,7 +24,7 @@ class NginxReWriter:
                     output_txt += "worker_processes {};\n".format(process)
 
                 elif line.__contains__("worker_connections"):
-                    output_txt += "worker_connections {}:\n".format(connection)
+                    output_txt += "worker_connections {};\n".format(connection)
 
                 else:
                     output_txt += line
