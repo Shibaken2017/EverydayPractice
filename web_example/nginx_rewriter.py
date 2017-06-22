@@ -42,6 +42,5 @@ if __name__ == "__main__":
     writer.rewrite(args[1], args[2], args[3])
 
     #reload the nginx.conf
-    os.system("echo abcdefg >> test.txt")
     os.system("sudo nginx -s reload")
     print "finish"
