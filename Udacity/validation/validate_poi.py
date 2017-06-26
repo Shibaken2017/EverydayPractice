@@ -9,7 +9,10 @@
 
     After that, it's not our code anymore--it's yours!
 """
-
+from sklearn.datasets import load_iris
+from sklearn.model_selection import cross_val_score
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score
 import pickle
 import sys
 sys.path.append("../tools/")
@@ -28,5 +31,15 @@ labels, features = targetFeatureSplit(data)
 
 
 ### it's all yours from here forward!  
+ #= DecisionTreeClassifier(random_state=0)
+clf =DecisionTreeClassifier(random_state=42)
+#clf = clf.fit(features, labels)
+#pred=clf.predict(features)
+#print accuracy_score(labels, pred)
+
+print cross_val_score(clf, features, labels, cv=10)
+
+
+
 
 
