@@ -25,10 +25,6 @@ months = ['January',
 
 
 def valid_month(month):
-    if month in months:
-        print month
-    else:
-        print None
 
 # => "January"
 # print valid_month("January")
@@ -37,3 +33,7 @@ def valid_month(month):
 # => None
 # print valid_month("")
 # => None
+    if month:
+        cap_mon=month.capitalize()
+        if cap_mon in months:
+            return cap_mon
