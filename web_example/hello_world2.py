@@ -12,7 +12,7 @@ import json
 import datetime
 
 from tornado.options import define ,options
-define("port" ,default=8000,help="run on the given port",type=int)
+define("port" ,default=7000,help="run on the given port",type=int)
 
 
 
