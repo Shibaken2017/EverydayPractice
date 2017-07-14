@@ -38,7 +38,7 @@ print get_error_rate(target_fname)
 
 
 def make_csv(fname_form,connection,process,target_dir,output_dir,users_list,rps_list):
-    csv_fname="connection{}process{}.csv".format(connection,process)
+    csv_fname=os.path.join(output_dir,"process{}connection{}.csv".format(process,connection))
 
     with open(csv_fname,"w")as writer:
         output_writer = csv.writer(writer)
@@ -58,7 +58,8 @@ def make_csv(fname_form,connection,process,target_dir,output_dir,users_list,rps_
                     print "okokoko"
                     print fname
                     print get_error_rate(fname)
-                    each_line.append(get_error_rate(fname))
+                    #小数点以下切り捨てround(val,2)
+                    each_line.append(round(float(get_error_rate(fname)),1))
                 else:
                     each_line.append("None")
             output_writer.writerow(each_line)
@@ -66,7 +67,19 @@ def make_csv(fname_form,connection,process,target_dir,output_dir,users_list,rps_
 #def make_csv(fname_form,connection,process,target_dir,output_dir,users_list,rps_list):
 fname_form="process{}_connection{}_{}users_{}_s3"
 
-make_csv(fname_form,64,3,"/home/shibaken/IDEetc/apache-jmeter-3.2/bin/report_dir5/","./",[1,8,16,32,64],["1_50RPS","50_100RPS"])
-#process2_connection128_64users_1_50RPS_s3
-#fname_form="process{}_connection{}_{}users_{}_s3"
+
+if __name__=="__main__":
+    connection_list=[8,16,32,64,128,256]
+    process_list=[1,2,3]
+
+    for con in connection_list:
+        for pro in process_list:
+
+
+            make_csv(fname_form,con,pro,"/home/shibaken/IDEetc/apache-jmeter-3.2/bin/report_dir5/",
+                     "./hello_world_sleep/s3/",[1,8,16,32,64,128],["1_50RPS","50_100RPS"])
+
+
+    #process2_connection128_64users_1_50RPS_s3
+    #fname_form="process{}_connection{}_{}users_{}_s3"
 
