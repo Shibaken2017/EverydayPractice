@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{static_url("style.css")}}">
+    <title>ROT13</title>
+</head>
+<body>
+    <h1>ROT13</h1>
+    <p>Enter the text below
+    </p>
+    <form method="post" action="/rot13">
+        <p>Souce text<br>
+            <textarea rows=4,cols=55 name="source"></textarea></p>
+
+        <input type="submit">
+    </form>
+</body>
+</html>
