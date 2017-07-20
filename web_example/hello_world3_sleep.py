@@ -22,7 +22,7 @@ define("port" ,default=7000,help="run on the given port",type=int)
 class IndexHandler(tornado.web.RequestHandler):
     def get(self):
 
-        req=time.sleep(1)
+        time.sleep(1)
         request_header=self.request.headers.get("X-Test")
         greeting=self.get_argument("greeting","hello")
 
