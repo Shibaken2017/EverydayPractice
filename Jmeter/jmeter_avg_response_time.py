@@ -22,78 +22,16 @@ def  get_error_rate(fname):
                 tmp += line
                 break
 
-    return tmp.split(",")[5].strip()
+    return tmp.split(",")[6].strip()
 
 
 #target_fname="/home/shibaken/IDEetc/apache-jmeter-3.2/bin/report_dir5/process2_connection128_64users_1_50RPS_s3/content/js/dashboard.js"
-target_fname="/home/shibaken/IDEetc/apache-jmeter-3.2/bin/report_dir5/process3_connection64_8users_1_50RPS_s3/content/js/dashboard.js"
+target_fname="/home/shibaken/IDEetc/apache-jmeter-3.2/bin" \
+             "/report_dir5/process3_connection64_8users_1_50RPS_s3/content/js/dashboard.js"
 
-print get_error_rate(target_fname)
-
-
-
-def make_table(input_list):
-    '''
-    mark_dwonのテーブルをテキスト出力
-    :return:
-    '''
-    output_txt=""
-    if len(input_list):
-        for ele in input_list:
-            output_txt+="|"
-            output_txt+=str(ele)
+#print get_error_rate(target_fname)
 
 
-        output_txt+="|\n"
-
-    return output_txt
-
-
-
-
-
-
-def make_wiki_table(fname_form,connection,process,target_dir,output_dir,users_list,rps_list):
-    '''
-    make error rate tables for baklog wiki
-    :param fname_form:
-    :param connection:
-    :param process:
-    :param target_dir:
-    :param output_dir:
-    :param users_list:
-    :param rps_list:
-    :return:
-    '''
-
-
-    wiki_fname=os.path.join(output_dir,"process{}connection{}.txt".format(process,connection))
-
-    with open(wiki_fname,"w")as writer:
-        #output_writer = csv.writer(writer)
-        initial_line=[""]
-        initial_line.extend(rps_list)
-        writer.write(make_table(initial_line))
-        #output_writer.writerow(initial_line)
-        for user in users_list:
-            each_line=[str(user)+"users"]
-            for rps in rps_list:
-
-                # process2_connection128_64users_1_50RPS_s3
-                #fname_form = "process{}_connection{}_{}users_{}_s3"
-                dir_name=os.path.join(target_dir,fname_form.format(process,connection,user,rps))
-                fname=os.path.join(dir_name,"content/js/dashboard.js")
-                #print fname
-                if os.path.exists(fname):
-                    print "okokoko"
-                    print fname
-                    print get_error_rate(fname)
-                    #小数点以下切り捨てround(val,2)
-                    each_line.append(str(round(float(get_error_rate(fname)),1))+"%")
-                else:
-                    each_line.append("×")
-            writer.write(make_table(each_line))
-            #output_writer.writerow(each_line)
 
 
 
@@ -101,6 +39,9 @@ def make_wiki_table(fname_form,connection,process,target_dir,output_dir,users_li
 
 
 def make_csv(fname_form,connection,process,target_dir,output_dir,users_list,rps_list):
+
+    if not os.path.exists(target_dir):
+        raise Exception("dirがありませｎ")
     csv_fname=os.path.join(output_dir,"process{}connection{}.csv".format(process,connection))
 
     with open(csv_fname,"w")as writer:
@@ -128,20 +69,19 @@ def make_csv(fname_form,connection,process,target_dir,output_dir,users_list,rps_
             output_writer.writerow(each_line)
 
 #def make_csv(fname_form,connection,process,target_dir,output_dir,users_list,rps_list):
+fname_form="process{}_connection{}_{}users_{}_s3"
 
 
 if __name__=="__main__":
-    fname_form = "process{}_connection{}_{}users_{}_s3"
-
     connection_list=[8,16,32,64,128,256]
     process_list=[1,2,3]
 
     for con in connection_list:
         for pro in process_list:
 
-
-            make_wiki_table(fname_form,con,pro,"/home/shibaken/IDEetc/apache-jmeter-3.2/bin/hello_world_sleep_header/",
-                     "./hello_world_sleep_header/s3/",[1,8,16,32,64,128],["1_50RPS","50_100RPS","100_200RPS"])
+            #already/report_dir/
+            make_csv(fname_form,con,pro,"/home/shibaken/IDEetc/apache-jmeter-3.2/bin/already/report_dir/",
+                 "./hello_world/s3_average_response_time/",[1,8,16,32,64,128],["1_50RPS","50_100RPS","100_200RPS"])
 
 
     #process2_connection128_64users_1_50RPS_s3
