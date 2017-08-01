@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>confirmation</title>
+</head>
+
+<body>
+
+<h1>これを登録してokか?</h1>
+<h1>your title</h1>
+<p>{{title}}</p>d
+<h1>your content</h1>
+<p>{{content}}</p>
+
+<form method="post" action="/register">
+
+<INPUT TYPE="hidden" NAME="content" VALUE={{content}}>
+<INPUT TYPE="hidden" NAME="title" VALUE={{title}}>
+<INPUT TYPE="submit" VALUE="確認">
+
+</form>
+
+</body>
+
+</html>

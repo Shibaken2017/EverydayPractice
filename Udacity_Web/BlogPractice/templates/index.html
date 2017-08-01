@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{static_url("style.css")}}">
+    <title>EntrancePage</title>
+</head>
+<body>
+    <h1>entrance page</h1>
+    <p>Enter the two text below
+    </p>
+    <form method="post" action="/confirmation">
+        <p>title<br>
+            <textarea rows=4,cols=55 name="title"></textarea></p>
+        <p>content</p>
+        <textarea rows=4,cols=55 name="content"></textarea>
+        <input type="submit">
+    </form>
+</body>
+</html>
