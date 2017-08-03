@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>board</title>
+</head>
+<body>
+<h1>board</h1>
+{%for comment in comment_list%}
+    <p>title:{{comment.title}}  date:{{comment.date}} <br>
+    content:{{comment.content}}</p>
+{%end%}
+</body>
+</html>
