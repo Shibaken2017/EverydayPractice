@@ -31,6 +31,7 @@ now=d.strftime("%Y-%m-%d %H:%M:%S")
 
 curs.execute(r'select * from practice where word="economics"')
 test=curs.fetchall()
+print test
 for ele in test:
     print ele
 
