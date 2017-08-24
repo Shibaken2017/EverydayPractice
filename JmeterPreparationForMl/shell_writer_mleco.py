@@ -88,8 +88,7 @@ class ShellWriter:
                   + jmeter_fname.split(".")[0] + "{}max_queue".format(self.max_queue) + ".jtl"
             # report出力用のdirを作成
             self.__output_txt += "\tmkdir " + report + "\n"
-            self.__output_txt += "\ttime timeout {} ./jmeter -n -t {} -l {} -e -o {}\n". \
-                format(self.time_limit, os.path.join(HOME_DIR, "jmx_files/ml_eco",jmeter_fname), log, report)
+            self.__output_txt += r'\ttime timeout {} ./jmeter -n -t {} -l {} -e -o {}  -Djmeter.save.saveservice.timestamp_format="yyyy/MM/dd hh:mm:ss"\n'.format(self.time_limit, os.path.join(HOME_DIR, "jmx_files/ml_eco",jmeter_fname), log, report)
             # self.__output_txt+="\techo {}_`date \"+%Y/%m/%d/%H:%M\"`>>jmeter.log\n".format(report)
 
             self.__output_txt += "\tsleep {}\n".format(self.__sleep_time)
@@ -128,7 +127,7 @@ if __name__ == "__main__":
     # writer.exe("/home/shibaken/IDEetc/apache-jmeter-3.2/bin/jmx_files/1_16users/","/home/shibaken/IDEetc/apache-jmeter-3.2/bin/report_dir/",
     #         "/home/shibaken/IDEetc/apache-jmeter-3.2/bin/log_dir/","test.sh",120,"w")
     #         [1,8,16,32,64,128]
-    writer.exe("/home/shibaken/PycharmProjects/load_testing_mlflow/ml_eco/", report_dir, log_dir, "./test.sh", 97200,
+    writer.exe("/home/shibaken/PycharmProjects/load_testing_mlflow/ml_eco_10min/", report_dir, log_dir, "./test.sh", 97200,
                3600, 1000, "w")
     # for num in [8,16,32,64,128]:
     #    for rps in ["1_50","50_100","100_200"]:
